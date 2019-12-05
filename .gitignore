@@ -19,6 +19,8 @@
 *.rar
 
 /target/
+uo-dms-core/target/
+uo-dms-rest-api/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
