@@ -32,8 +32,6 @@
 
 ### IntelliJ IDEA ###
 .idea
-uo-dms-core/.idea
-uo-dms-rest-api/.idea
 *.iws
 *.iml
 *.ipr
