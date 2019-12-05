@@ -1,0 +1,6 @@
+dms:
+    db_host: localhost
+    db_port: "27017"
+    db_name: set-dms-db
+    rep_username: admin
+    rep_password: admin
