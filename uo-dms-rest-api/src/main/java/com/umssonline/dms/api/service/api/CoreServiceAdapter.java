@@ -31,6 +31,7 @@ public interface CoreServiceAdapter {
     Object getVersionMetadata(String fileId, String versionId);
     Object getVersionData(String fileId, String versionId) throws RepositoryException, IllegalAccessException, IOException;
     Object getAllVersions(String fileId) throws RepositoryException, IllegalAccessException, IOException;
+    Integer countFileVersions(String fileId, boolean includeRoot) throws RepositoryException, IllegalAccessException, IOException;
     Object selectVersion(String fileId, String versionId) throws RepositoryException, IllegalAccessException, IOException;
     Object deleteVersion(String fileId, String versionId) throws RepositoryException, IllegalAccessException, IOException;
     //endregion

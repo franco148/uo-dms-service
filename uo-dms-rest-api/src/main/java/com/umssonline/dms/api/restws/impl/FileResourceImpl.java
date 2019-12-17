@@ -492,6 +492,33 @@ public class FileResourceImpl implements FileResourceController {
     }
 
     @Override
+    public Response countFileVersions(String fileId, boolean includeRoot) {
+
+        try {
+            Integer response = serviceAdapter.countFileVersions(fileId, includeRoot);
+            return Response.ok(response).build();
+        } catch (IllegalAccessException e) {
+            throw new AppException(Response.Status.BAD_REQUEST.getStatusCode(),
+                    400,
+                    "Invalid parameters, 'File' and 'Title' can not be empty or null.",
+                    "required properties - file, title" ,
+                    AppConstants.BLOG_POST_URL);
+        } catch (RepositoryException e) {
+            throw new AppException(Response.Status.BAD_REQUEST.getStatusCode(),
+                    400,
+                    "Invalid parameters, 'File' and 'Title' can not be empty or null.",
+                    "required properties - file, title" ,
+                    AppConstants.BLOG_POST_URL);
+        } catch (IOException e) {
+            throw new AppException(Response.Status.BAD_REQUEST.getStatusCode(),
+                    400,
+                    "Invalid parameters, 'File' and 'Title' can not be empty or null.",
+                    "required properties - file, title" ,
+                    AppConstants.BLOG_POST_URL);
+        }
+    }
+
+    @Override
     public Response getFileVersionMetadata(String fileId, String versionId) {
         return null;
     }

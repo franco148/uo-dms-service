@@ -19,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -275,6 +276,20 @@ public class SetJcrCoreAdapter implements CoreServiceAdapter {
         repository.setActionType(ActionHandlerOptions.DMS_ALL_VERSIONS);
 
         return DmsCoreFacade.getInstance().executeAction(repository);
+    }
+
+    @Override
+    public Integer countFileVersions(String fileId, boolean includeRoot) throws RepositoryException, IllegalAccessException, IOException {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put(DMSConstants.DMS_ID, fileId);
+
+        RepositoryDTO repository = new RepositoryDTO();
+        repository.setParams(parameters);
+        repository.setActionType(ActionHandlerOptions.DMS_ALL_VERSIONS);
+
+        List<VersionSchema> versionsResponse = (List<VersionSchema>)DmsCoreFacade.getInstance().executeAction(repository);
+
+        return includeRoot ? versionsResponse.size() : versionsResponse.size() - 1;
     }
 
     @Override

@@ -248,8 +248,23 @@ public interface FileResourceController {
             httpMethod = "GET",
             position = 8
     )
-    Response getFileVersions(@ApiParam(value = "ID of the file that needs to be feched to get its version", required = true, name = "id")
+    Response getFileVersions(@ApiParam(value = "ID of the file that needs to be fetched to get its version", required = true, name = "id")
                              @PathParam("id")String fileId);
+
+
+    @Path("/{id}/versions/count")
+    @GET
+    @ApiOperation(
+            value = "Count file versions",
+            notes = "Count file versions including the root or not",
+            response = Integer.class,
+            httpMethod = "GET",
+            position = 13
+    )
+    Response countFileVersions(@ApiParam(value = "ID of the file that needs to be fetched to get its version", required = true, name = "id")
+                               @PathParam("id")String fileId,
+                               @ApiParam(value = "A boolean flag that specifies if it includes the root file", name = "includeRoot")
+                               @QueryParam("includeRoot") boolean includeRoot);
 
 
     @Path("/{id}/versions/{version}/schema")
